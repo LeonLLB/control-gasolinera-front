@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "tw:dev":"tailwindcss -i ./src/tw.css -o ./src/style.css --watch",
+    "tw:dev": "tailwindcss -i ./src/tw.css -o ./src/style.css --watch",
     "preview": "vite preview"
   },
   "dependencies": {
+    "notiflix": "^3.2.6",
     "tailwindcss": "^3.2.4",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
