@@ -1,7 +1,10 @@
 
 <script lang="ts" setup>
+import { useRouter } from 'vue-router';
 import CenterBox from '../components/CenterBox.vue';
 import FormInput from '../components/FormInput.vue';
+
+const router = useRouter()
 
 const form = {
     cedula: '',
@@ -10,6 +13,7 @@ const form = {
 
 const onSubmit = (e: Event ) => {
     e.preventDefault()
+    
 }
 
 </script>
