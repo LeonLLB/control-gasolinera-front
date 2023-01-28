@@ -1,18 +1,36 @@
-# Vue 3 + TypeScript + Vite
+# Cliente del control de la gasolinera
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+el codigo de la aplicacion se encuentra en la carpeta _/src_
 
-## Recommended IDE Setup
+## assets
+Contenido estatico de la aplicación, no se esta utilizando
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## components
+Componentes reutilizados en toda la aplicación
 
-## Type Support For `.vue` Imports in TS
+## guards
+Lógica de acceso a las rutas, entre ellas estan _no autenticado_,_autenticado_,_es administrador_
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## interfaces
+Interfaces de los tipos de datos de la aplicación
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## pages
+Paginas de la aplicación
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## services
+Servicios de la aplicación. Aqui estan las funciones que se comunican y consultan los datos al servidor
+
+## app.vue
+Punto de partida de la aplicación
+
+## main.ts
+Codigo de preparación y arranque de la aplicación
+
+## router.ts
+Rutas de la aplicación
+
+## style.css
+Estilos generados por tailwindcss
+
+## tw.css
+Estilos y utilidades para que tailwindcss genere
