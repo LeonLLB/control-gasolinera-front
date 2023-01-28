@@ -38,6 +38,13 @@ class UserService {
         return data
     }
 
+    async logout(){
+        await fetch(import.meta.env.VITE_API_URL+'/api/usuarios/logout',{
+            method:'POST',
+            credentials:'include'
+        })
+    }
+
 }
 
 export const userService = new UserService()

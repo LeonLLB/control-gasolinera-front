@@ -6,10 +6,13 @@ import CenterBox from '../components/CenterBox.vue';
 import FormInput from '../components/FormInput.vue';
 import { clienteService } from '../services/client.service';
 import { distribucionService } from '../services/distribucion.service';
+import { useRouter } from 'vue-router';
 
     const isAdmin = ref(false)
     const didCheckClientData = ref(false)
     const doesClientExist = ref(false)
+
+    const router = useRouter()
 
     const defForm = {
         cliente:{
@@ -82,6 +85,11 @@ import { distribucionService } from '../services/distribucion.service';
         })
     }
 
+    const logOut = () => {
+        userService.logout()
+        .then(()=>router.replace('/login'))
+    }
+
     onMounted(()=>checkIfUserIsAdmin())
 
 </script>
@@ -105,7 +113,9 @@ import { distribucionService } from '../services/distribucion.service';
             </fieldset>
             <div class="col-span-2 flex flex-row justify-center space-x-4 w-full">
                 <button class="shadow-md shadow-gray-500 transition-all duration-100 bg-blue-500 p-2 rounded text-white hover:bg-blue-600 active:bg-blue-400 active:scale-95" type="submit">Registrar</button>
-                <button v-if="isAdmin" class="shadow-md shadow-gray-500 transition-all duration-100 bg-blue-500 p-2 rounded text-white hover:bg-blue-600 active:bg-blue-400 active:scale-95" type="button">Ir a reportes</button>
+                <button @click="router.push('/reportes')" v-if="isAdmin" class="shadow-md shadow-gray-500 transition-all duration-100 bg-blue-500 p-2 rounded text-white hover:bg-blue-600 active:bg-blue-400 active:scale-95" type="button">Ir a reportes</button>
+                <button @click="router.push('/usuarios')" v-if="isAdmin" class="shadow-md shadow-gray-500 transition-all duration-100 bg-blue-500 p-2 rounded text-white hover:bg-blue-600 active:bg-blue-400 active:scale-95" type="button">Ir a usuarios</button>
+                <button @click="logOut" v-if="isAdmin" class="shadow-md shadow-gray-500 transition-all duration-100 bg-blue-500 p-2 rounded text-white hover:bg-blue-600 active:bg-blue-400 active:scale-95" type="button">Cerrar sesión</button>
             </div>
         </form>
     </CenterBox>
