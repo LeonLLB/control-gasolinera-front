@@ -1,3 +1,5 @@
+import { Usuario } from "../interfaces/usuarios"
+import { Response } from "../interfaces/response"
 
 
 class UserService {
@@ -24,6 +26,16 @@ class UserService {
         })
     
         return (response.status === 200)
+    }
+
+    async checkAuthUser():Promise<Response<Usuario>>{
+        const response = await fetch(import.meta.env.VITE_API_URL+'/api/usuarios/check-auth',{
+            credentials:'include'
+        })
+
+        const data:Response<Usuario> = await response.json()
+    
+        return data
     }
 
 }
