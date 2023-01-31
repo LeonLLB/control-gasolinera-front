@@ -3,7 +3,6 @@
         <FormInput v-model="form.usuario" input-required input-name="usuario" label-text="Usuario"/>
         <FormInput v-model="form.cedula" input-required input-name="cedula" label-text="Cedula"/>
         <span class="m-4">Contraseña generada : {{ form.password }}</span>
-        <!-- <FormInput v-model="form.password" input-disabled input-required input-name="password" label-text="Contraseña generada"/> -->
         <div class="mt-4 flex flex-row space-x-4">
             <button class="btn-primary" type="button" @click="regenerar">Regenar contraseña</button>
             <button class="btn-primary" type="submit">Registrar usuario</button>

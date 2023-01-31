@@ -85,6 +85,17 @@ class UserService {
         return data
     }
 
+    async delete( userId: number):Promise<PostResponse<never>>{
+        const response = await fetch(import.meta.env.VITE_API_URL+'/api/usuarios/'+userId,{
+            method:'DELETE',
+            credentials:'include',
+        })
+
+        const data: PostResponse<never> = await response.json()
+
+        return data
+    }
+
 }
 
 export const userService = new UserService()
