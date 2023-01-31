@@ -7,7 +7,7 @@
         <div class="mt-4 flex flex-row space-x-4">
             <button class="btn-primary" type="button" @click="regenerar">Regenar contraseña</button>
             <button class="btn-primary" type="submit">Registrar usuario</button>
-            <button class="btn-danger" type="button">Cancelar</button>
+            <button class="btn-danger" type="button" @click="emit('onClose')">Cancelar</button>
         </div>
     </form>
 </template>
@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 
     import { ref } from 'vue';
-import { userService } from '../services/user.service';
+    import { userService } from '../services/user.service';
     import { genPassword } from '../utils/genPassword';
     import FormInput from './FormInput.vue';
 
@@ -47,6 +47,6 @@ import { userService } from '../services/user.service';
         })
     }
 
-    const emit = defineEmits(['onSuccess'])
+    const emit = defineEmits(['onSuccess','onClose'])
 
 </script>

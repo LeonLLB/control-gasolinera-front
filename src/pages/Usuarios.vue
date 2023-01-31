@@ -30,10 +30,11 @@
     </div>
     <Modal
         v-if="inscripcionModal.isOpen.value"
-        title="Crear usuario"        
+        title="Crear usuario"       
+        :is-closing="inscripcionModal.isClosing.value"
         @on-close="inscripcionModal.toggleModal"
     >
-        <UsuarioForm @on-success="()=>{inscripcionModal.toggleModal(); getUsuarios()}"/>
+        <UsuarioForm @on-close="inscripcionModal.toggleModal()" @on-success="()=>{inscripcionModal.toggleModal(); getUsuarios()}"/>
     </Modal>
 </template>
 
