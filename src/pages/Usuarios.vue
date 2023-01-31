@@ -20,7 +20,7 @@
                         <td>{{ usuario.cedula }}</td>
                         <td> {{ usuario.isAdmin ? 'Administrador' : 'Cajero' }} </td>
                         <td class="flex flex-col space-y-2">
-                            <button class="btn-primary">Cambiar clave</button>
+                            <button class="btn-primary" @click="()=>startCambiarClave(usuario.id)">Cambiar clave</button>
                             <button class="btn-primary">Eliminar</button>
                         </td>
                     </tr>
@@ -36,13 +36,22 @@
     >
         <UsuarioForm @on-close="inscripcionModal.toggleModal()" @on-success="()=>{inscripcionModal.toggleModal(); getUsuarios()}"/>
     </Modal>
+    <Modal
+        v-if="cambioClaveModal.isOpen.value"
+        title="Cambiar clave al usuario"
+        :is-closing="cambioClaveModal.isClosing.value"
+        @on-close="cambioClaveModal.toggleModal"
+    >
+        <UsuarioCambiarClave :user-id="id" @close="cambioClaveModal.toggleModal()"/>
+    </Modal>
 </template>
 
 <script lang="ts" setup>
 
     import { ref, onMounted } from 'vue';
     import Modal from '../components/Modal.vue';
-import UsuarioForm from '../components/UsuarioForm.vue';
+    import UsuarioCambiarClave from '../components/UsuarioCambiarClave.vue';
+    import UsuarioForm from '../components/UsuarioForm.vue';
     import { useModal } from '../composables/useModal';
     import { Usuario } from '../interfaces/usuarios';
     import { userService } from '../services/user.service';
@@ -50,6 +59,13 @@ import UsuarioForm from '../components/UsuarioForm.vue';
     const usuarios = ref<Usuario[]>([])
     const cargando = ref(true)
     const tableContainerRef = ref()
+
+    const id = ref(0)
+
+    const startCambiarClave = (userId: number) => {
+        id.value = userId
+        cambioClaveModal.toggleModal()
+    }
 
     const inscripcionModal = useModal()
     const cambioClaveModal = useModal()

@@ -70,6 +70,21 @@ class UserService {
         return data
     }
 
+    async changePassword(password: string, userId: number):Promise<PostResponse<Usuario>>{
+        const response = await fetch(import.meta.env.VITE_API_URL+'/api/usuarios/change-password/'+userId,{
+            method:'PUT',
+            credentials:'include',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({password})
+        })
+
+        const data: PostResponse<Usuario> = await response.json()
+
+        return data
+    }
+
 }
 
 export const userService = new UserService()
