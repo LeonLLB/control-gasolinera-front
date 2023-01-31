@@ -12,6 +12,7 @@
 <script lang="ts" setup>
 
     import { ref } from 'vue';
+import { notiflix } from '../services/notiflix.service';
     import { userService } from '../services/user.service';
     import { genPassword } from '../utils/genPassword';
 
@@ -23,9 +24,10 @@
         userService.changePassword(password.value,userId!)
         .then(res=>{
             if(res.message){
-                //TODO: HANDLE ERROR
+                notiflix.toast.failure(res.message)
                 return
             }
+            notiflix.toast.success('Clave cambiada con exito!')
             emit('close')
         })
     }

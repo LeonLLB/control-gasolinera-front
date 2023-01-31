@@ -47,7 +47,6 @@ import { useRouter } from 'vue-router';
                     didCheckClientData.value=false
                     doesClientExist.value = false
                 }
-                //TODO: HANDLE ERROR
             })
         } else {
 

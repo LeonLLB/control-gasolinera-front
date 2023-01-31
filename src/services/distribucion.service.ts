@@ -1,10 +1,11 @@
-import { DistribucionDto } from "../interfaces/distribucion"
-import { Response } from "../interfaces/response"
-// import { Distribucion } from "../interfaces/Distribucion"
+import { Distribucion, DistribucionDto } from "../interfaces/distribucion"
+import { PostResponse, Response } from "../interfaces/response"
+import { notiflix } from "./notiflix.service"
 
 class DistribucionService {
 
     async registrar(dto: DistribucionDto){
+        notiflix.loading.displayLoading('Registrando litraje...','dots')
         const response = await fetch(import.meta.env.VITE_API_URL+'/api/distribucion',{
             credentials:'include',
             method:'POST',
@@ -14,13 +15,14 @@ class DistribucionService {
             body:JSON.stringify(dto)
         })
 
-        const body = await response.json()
+        const body: PostResponse<Distribucion> = await response.json()
 
-        //TODO: HANDLE ERROR
+        notiflix.loading.hideLoading()
         if(response.status === 200){
+            notiflix.toast.failure(body.message!)
             return true
         }
-        console.log(body)
+        notiflix.toast.success('Litraje registrado!')
         return false
     }
 

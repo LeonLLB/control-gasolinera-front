@@ -12,7 +12,8 @@
 
 <script lang="ts" setup>
 
-    import { userService } from '../services/user.service';
+    import { notiflix } from '../services/notiflix.service';
+import { userService } from '../services/user.service';
 
     const {userId} = defineProps({
         userId: Number
@@ -22,9 +23,10 @@
         userService.delete(userId!)
         .then((res)=>{
             if(res.message){
-                //TODO: handle error
+                notiflix.toast.failure(res.message)
                 return
             }
+            notiflix.toast.success('Usuario eliminado con exito!')
             emit('onSuccess')
         })
     }

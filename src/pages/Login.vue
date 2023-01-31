@@ -3,6 +3,7 @@
 import { useRouter } from 'vue-router';
 import CenterBox from '../components/CenterBox.vue';
 import FormInput from '../components/FormInput.vue';
+import { notiflix } from '../services/notiflix.service';
 import { userService } from '../services/user.service';
 
 const router = useRouter()
@@ -15,7 +16,7 @@ const form = {
 const onSubmit = (e: Event ) => {
     e.preventDefault()
     if(!form.cedula || isNaN(+form.cedula) || !form.clave){
-        //TODO: HANDLE ERROR
+        notiflix.toast.failure('Los datos no son validos')
         return
     }
     userService.login(+form.cedula,form.clave)

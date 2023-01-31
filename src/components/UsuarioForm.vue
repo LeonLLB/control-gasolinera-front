@@ -14,6 +14,7 @@
 <script lang="ts" setup>
 
     import { ref } from 'vue';
+import { notiflix } from '../services/notiflix.service';
     import { userService } from '../services/user.service';
     import { genPassword } from '../utils/genPassword';
     import FormInput from './FormInput.vue';
@@ -32,16 +33,17 @@
         if(
             !form.value.usuario || !form.value.cedula || isNaN(+form.value.cedula)
         ){
-           //TODO: Handle input error,
+           notiflix.toast.failure('Datos no validos')
            return
         }
 
         userService.create({...form.value,cedula:+form.value.cedula})
         .then((res)=>{
             if(res.message){
-                //TODO: handle error
+                notiflix.toast.failure(res.message)
                 return
             }
+            notiflix.toast.success('Usuario registrado con exito')
             emit('onSuccess')
         })
     }
