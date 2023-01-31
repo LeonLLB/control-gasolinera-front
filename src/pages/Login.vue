@@ -36,7 +36,7 @@ const onSubmit = (e: Event ) => {
             <FormInput inputRequired v-model="form.cedula" input-name="cedula" input-type="number" label-text="Cedula"/>
             <FormInput inputRequired v-model="form.clave" input-name="clave" input-type="password" label-text="Contraseña"/>
             <div class="flex flex-row justify-center w-full">
-                <button class="shadow-md shadow-gray-500 transition-all duration-100 bg-blue-500 p-2 rounded text-white hover:bg-blue-600 active:bg-blue-400 active:scale-95" type="submit">Iniciar sesion</button>
+                <button class="btn-primary" type="submit">Iniciar sesion</button>
             </div>
         </form>
     </CenterBox>
